@@ -1586,7 +1586,6 @@ var SuggestList = function (_React$Component) {
           { className: classes, style: this.props.style },
           this.props.suggests.map(function (suggest) {
             var isActive = _this2.props.activeSuggest && suggest.placeId === _this2.props.activeSuggest.placeId;
-
             return _react2.default.createElement(_suggestItem2.default, { key: suggest.placeId,
               className: suggest.className,
               suggest: suggest,
