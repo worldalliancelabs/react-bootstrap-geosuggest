@@ -50,7 +50,7 @@ export default class SuggestList extends React.Component {
     );
 
     return <div className={classes}>
-      <ul className={classes} style={this.props.style}>
+      <ul className="dropdown-menu" style={this.props.style}>
         {this.props.suggests.map(suggest => {
           const isActive = this.props.activeSuggest &&
             suggest.placeId === this.props.activeSuggest.placeId;
