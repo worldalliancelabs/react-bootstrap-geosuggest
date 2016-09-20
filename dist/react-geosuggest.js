@@ -1449,7 +1449,7 @@ var SuggestItem = function (_React$Component) {
      * @return {Function} The React element to render
      */
     value: function render() {
-      var classes = (0, _classnames2.default)('geosuggest-item', this.props.className, { 'geosuggest-item--active': this.props.isActive });
+      var classes = (0, _classnames2.default)('geosuggest-item', this.props.className, { 'active': this.props.isActive });
 
       return _react2.default.createElement(
         'li',
@@ -1583,7 +1583,7 @@ var SuggestList = function (_React$Component) {
         { className: classes },
         _react2.default.createElement(
           'ul',
-          { className: classes, style: this.props.style },
+          { className: 'dropdown-menu', style: this.props.style },
           this.props.suggests.map(function (suggest) {
             var isActive = _this2.props.activeSuggest && suggest.placeId === _this2.props.activeSuggest.placeId;
             return _react2.default.createElement(_suggestItem2.default, { key: suggest.placeId,
