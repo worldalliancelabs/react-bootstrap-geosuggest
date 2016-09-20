@@ -45,25 +45,27 @@ export default class SuggestList extends React.Component {
    */
   render() {
     const classes = classnames(
-      'geosuggest__suggests',
-      {'geosuggest__suggests--hidden': this.isHidden()}
+      'dropdown',
+      {'open': !this.isHidden()}
     );
 
-    return <ul className={classes} style={this.props.style}>
-      {this.props.suggests.map(suggest => {
-        const isActive = this.props.activeSuggest &&
-          suggest.placeId === this.props.activeSuggest.placeId;
-
-        return <SuggestItem key={suggest.placeId}
-          className={suggest.className}
-          suggest={suggest}
-          style={this.props.suggestItemStyle}
-          isActive={isActive}
-          onMouseDown={this.props.onSuggestMouseDown}
-          onMouseOut={this.props.onSuggestMouseOut}
-          onSelect={this.props.onSuggestSelect} />;
-      })}
-    </ul>;
+    return <div className={classes}>
+      <ul className={classes} style={this.props.style}>
+        {this.props.suggests.map(suggest => {
+          const isActive = this.props.activeSuggest &&
+            suggest.placeId === this.props.activeSuggest.placeId;
+    
+          return <SuggestItem key={suggest.placeId}
+            className={suggest.className}
+            suggest={suggest}
+            style={this.props.suggestItemStyle}
+            isActive={isActive}
+            onMouseDown={this.props.onSuggestMouseDown}
+            onMouseOut={this.props.onSuggestMouseOut}
+            onSelect={this.props.onSuggestSelect} />;
+        })}
+      </ul>
+    </div>;
   }
 }
 
