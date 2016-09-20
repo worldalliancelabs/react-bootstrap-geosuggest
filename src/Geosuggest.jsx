@@ -411,7 +411,6 @@ class Geosuggest extends React.Component {
         {input}
       </div>
       {suggestionsList}
-      
     </div>;
   }
 }
