@@ -10,6 +10,12 @@ import filterInputAttributes from './filter-input-attributes';
  * @return {JSX} The icon component.
  */
 class Input extends React.Component {
+  constructor() {
+		super();
+
+		this.onChange = this.onChange.bind(this);
+		this.focus = this.focus.bind(this);
+	}
   /**
    * Whether or not the component should update
    * @param {Object} nextProps The new properties
@@ -24,7 +30,7 @@ class Input extends React.Component {
    * When the input got changed
    */
   onChange = () => {
-    this.props.onChange(this.refs.input.value);
+    this.props.onChange(this.input.value);
   }
 
   /**
@@ -80,7 +86,7 @@ class Input extends React.Component {
    * Focus the input
    */
   focus() {
-    this.refs.input.focus();
+    this.input.focus();
   }
 
   /**
@@ -95,7 +101,7 @@ class Input extends React.Component {
       );
 
     return <input className={classes}
-      ref='input'
+      ref={i => { this.input = i; }}
       type='text'
       autoComplete='off'
       {...attributes}

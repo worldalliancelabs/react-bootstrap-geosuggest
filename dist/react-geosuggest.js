@@ -1834,6 +1834,7 @@ var Geosuggest = function (_React$Component) {
 
     _this.onInputChange = _this.onInputChange.bind(_this);
     _this.onAfterInputChange = _this.onAfterInputChange.bind(_this);
+    _this.focus = _this.focus.bind(_this);
 
     if (props.queryDelay) {
       _this.onAfterInputChange = (0, _lodash2.default)(_this.onAfterInputChange, props.queryDelay);
@@ -1921,7 +1922,7 @@ var Geosuggest = function (_React$Component) {
      * Focus the input
      */
     value: function focus() {
-      this.refs.input.focus();
+      this.input.focus();
     }
 
     /**
@@ -2159,10 +2160,14 @@ var Geosuggest = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this5 = this;
+
       var attributes = (0, _filterInputAttributes2.default)(this.props),
           classes = (0, _classnames2.default)('geosuggest', this.props.className, { 'geosuggest--loading': this.state.isLoading }),
           input = _react2.default.createElement(_input2.default, _extends({ className: this.props.inputClassName,
-        ref: 'input',
+        ref: function ref(i) {
+          _this5.input = i;
+        },
         value: this.state.userInput,
         ignoreEnter: !this.state.isSuggestsHidden,
         ignoreTab: this.props.ignoreTab,
@@ -2334,23 +2339,23 @@ var Input = function (_React$Component) {
   _inherits(Input, _React$Component);
 
   function Input() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
     _classCallCheck(this, Input);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this));
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Input.__proto__ || Object.getPrototypeOf(Input)).call.apply(_ref, [this].concat(args))), _this), _this.onChange = function () {
-      _this.props.onChange(_this.refs.input.value);
-    }, _this.onFocus = function () {
+    _this.onChange = function () {
+      _this.props.onChange(_this.input.value);
+    };
+
+    _this.onFocus = function () {
       _this.props.onFocus();
-    }, _this.onBlur = function () {
+    };
+
+    _this.onBlur = function () {
       _this.props.onBlur();
-    }, _this.onInputKeyDown = function (event) {
+    };
+
+    _this.onInputKeyDown = function (event) {
       switch (event.which) {
         case 40:
           // DOWN
@@ -2384,18 +2389,22 @@ var Input = function (_React$Component) {
         default:
           break;
       }
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+    };
+
+    _this.onChange = _this.onChange.bind(_this);
+    _this.focus = _this.focus.bind(_this);
+    return _this;
   }
+  /**
+   * Whether or not the component should update
+   * @param {Object} nextProps The new properties
+   * @param {Object} nextState The new state
+   * @return {Boolean} Update or not?
+   */
+
 
   _createClass(Input, [{
     key: 'shouldComponentUpdate',
-
-    /**
-     * Whether or not the component should update
-     * @param {Object} nextProps The new properties
-     * @param {Object} nextState The new state
-     * @return {Boolean} Update or not?
-     */
     value: function shouldComponentUpdate(nextProps, nextState) {
       return (0, _reactAddonsShallowCompare2.default)(this, nextProps, nextState);
     }
@@ -2428,7 +2437,7 @@ var Input = function (_React$Component) {
      * Focus the input
      */
     value: function focus() {
-      this.refs.input.focus();
+      this.input.focus();
     }
 
     /**
@@ -2439,11 +2448,15 @@ var Input = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var attributes = (0, _filterInputAttributes2.default)(this.props),
           classes = (0, _classnames2.default)('form-control', this.props.className);
 
       return _react2.default.createElement('input', _extends({ className: classes,
-        ref: 'input',
+        ref: function ref(i) {
+          _this2.input = i;
+        },
         type: 'text',
         autoComplete: 'off'
       }, attributes, {
