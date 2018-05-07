@@ -2,7 +2,7 @@
   "name": "react-bootstrap-geosuggest",
   "version": "1.25.5",
   "description": "A React autosuggest for the Google Maps Places API. Uses bootstrap styles",
-  "main": "dist/react-geosuggest.js",
+  "main": "module/Geosuggest.js",
   "author": "Richard Stephens <rjst01@gmail.com",
   "homepage": "https://github.com/richardstephens/react-bootstrap-geosuggest",
   "license": "MIT",
